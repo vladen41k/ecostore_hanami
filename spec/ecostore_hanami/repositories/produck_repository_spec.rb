@@ -1,3 +1,3 @@
-RSpec.describe ProduckRepository, type: :repository do
+RSpec.describe ProductRepository, type: :repository do
   # place your tests here
 end
