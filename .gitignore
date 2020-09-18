@@ -1,0 +1,8 @@
+/public/assets*
+/tmp
+.env.local
+.env.development
+.env.test
+.env.*.local
+.idea
+.byebug_history
