@@ -1,10 +1,11 @@
-module Web
+module Api
   module Controllers
-    module Product
+    module Categories
       class Index
-        include Web::Action
+        include Api::Action
 
         def call(params)
+          self.body = 'OK'
         end
       end
     end

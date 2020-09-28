@@ -1,8 +1,8 @@
-module Web
+module Api
   module Controllers
-    module Category
-      class Index
-        include Web::Action
+    module Categories
+      class Show
+        include Api::Action
 
         def call(params)
           self.body = 'OK'

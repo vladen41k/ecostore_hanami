@@ -1,7 +1,7 @@
 require 'hanami/helpers'
 require 'hanami/assets'
 
-module Web
+module Api
   class Application < Hanami::Application
     configure do
       ##
@@ -18,10 +18,7 @@ module Web
       #
       # When you add new directories, remember to add them here.
       #
-      load_paths << [
-        'controllers',
-        'views'
-      ]
+      load_paths << %w[controllers]
 
       # Handle exceptions with HTTP statuses (true) or don't catch them (false).
       # Defaults to true.
@@ -81,7 +78,7 @@ module Web
       #
       # See: http://www.rubydoc.info/gems/rack/Rack/Session/Cookie
       #
-      # sessions :cookie, secret: ENV['WEB_SESSIONS_SECRET']
+      # sessions :cookie, secret: ENV['API_SESSIONS_SECRET']
 
       # Configure Rack middleware for this application
       #
@@ -95,7 +92,7 @@ module Web
       # Default format for responses that don't consider the request format
       # Argument: A symbol representation of a mime type, defaults to :html
       #
-      # default_response_format :html
+      default_response_format :json
 
       ##
       # TEMPLATES
@@ -103,49 +100,49 @@ module Web
 
       # The layout to be used by all views
       #
-      layout :application # It will load Web::Views::ApplicationLayout
+      # layout :application # It will load Api::Views::ApplicationLayout
 
       # The relative path to templates
       #
-      templates 'templates'
+      # templates 'templates'
 
       ##
       # ASSETS
       #
-      assets do
-        # JavaScript compressor
-        #
-        # Supported engines:
-        #
-        #   * :builtin
-        #   * :uglifier
-        #   * :yui
-        #   * :closure
-        #
-        # See: https://guides.hanamirb.org/assets/compressors
-        #
-        # In order to skip JavaScript compression comment the following line
-        javascript_compressor :builtin
-
-        # Stylesheet compressor
-        #
-        # Supported engines:
-        #
-        #   * :builtin
-        #   * :yui
-        #   * :sass
-        #
-        # See: https://guides.hanamirb.org/assets/compressors
-        #
-        # In order to skip stylesheet compression comment the following line
-        stylesheet_compressor :builtin
-
-        # Specify sources for assets
-        #
-        sources << [
-          'assets'
-        ]
-      end
+      # assets do
+      #   # JavaScript compressor
+      #   #
+      #   # Supported engines:
+      #   #
+      #   #   * :builtin
+      #   #   * :uglifier
+      #   #   * :yui
+      #   #   * :closure
+      #   #
+      #   # See: https://guides.hanamirb.org/assets/compressors
+      #   #
+      #   # In order to skip JavaScript compression comment the following line
+      #   javascript_compressor :builtin
+      #
+      #   # Stylesheet compressor
+      #   #
+      #   # Supported engines:
+      #   #
+      #   #   * :builtin
+      #   #   * :yui
+      #   #   * :sass
+      #   #
+      #   # See: https://guides.hanamirb.org/assets/compressors
+      #   #
+      #   # In order to skip stylesheet compression comment the following line
+      #   stylesheet_compressor :builtin
+      #
+      #   # Specify sources for assets
+      #   #
+      #   sources << [
+      #     'assets'
+      #   ]
+      # end
 
       ##
       # SECURITY
@@ -241,7 +238,7 @@ module Web
       # FRAMEWORKS
       #
 
-      # Configure the code that will yield each time Web::Action is included
+      # Configure the code that will yield each time Api::Action is included
       # This is useful for sharing common functionality
       #
       # See: http://www.rubydoc.info/gems/hanami-controller#Configuration
@@ -250,13 +247,13 @@ module Web
         # before :authenticate!    # run an authentication before callback
       end
 
-      # Configure the code that will yield each time Web::View is included
+      # Configure the code that will yield each time Api::View is included
       # This is useful for sharing common functionality
       #
       # See: http://www.rubydoc.info/gems/hanami-view#Configuration
       view.prepare do
         include Hanami::Helpers
-        include Web::Assets::Helpers
+        # include Api::Assets::Helpers
       end
     end
 

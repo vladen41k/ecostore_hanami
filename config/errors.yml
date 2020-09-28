@@ -1,0 +1,5 @@
+en:
+  errors:
+    category_ids_exist: 'categories ids not exist'
+    equal_passwords: 'passwords must be equal'
+    unique_email: 'email must be unique'
