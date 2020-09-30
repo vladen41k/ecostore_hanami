@@ -7,7 +7,7 @@ class CreateUserValidation
     required(:user).schema do
       required(:first_name) { filled? & str? & size?(2..16) }
       required(:last_name) { filled? & str? & size?(2..16) }
-      required(:email) { filled? & str? & size?(5..16) }
+      required(:email) { filled? & str? & size?(5..16) & format?(/@/) }
       required(:password) { filled? & str? & size?(6..16) }
       required(:password_confirmation) { filled? & str? & size?(6..16) }
 

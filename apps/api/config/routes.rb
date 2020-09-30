@@ -6,6 +6,7 @@
 
 resources :products, only: %i[index show create update]
 resources :categories, only: %i[index show create]
-# resources :users, only: %i[create]
-post '/sign_up', to: 'users#create'
-post '/sign_in', to: 'users#create_session'
+
+post '/sign_up', to: 'users#create', as: :sign_up
+post '/sign_in', to: 'users#create_session', as: :sign_in
+patch '/confirm_email/:token', to: 'users#confirm_email', as: :confirm_email

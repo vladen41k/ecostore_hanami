@@ -31,7 +31,7 @@ module UsersServices
     end
 
     def find_user(id)
-      user = UserRepository.new.find id
+      user = UserRepository.new.users.where(id: id, activated: true).one
 
       user.nil? ? Failure({ user: 'user not found' }) : Success(user)
     end

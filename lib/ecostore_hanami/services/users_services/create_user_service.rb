@@ -1,5 +1,6 @@
 require 'dry/monads'
 require 'dry/monads/do'
+require 'securerandom'
 
 module UsersServices
   class CreateUserService
@@ -29,8 +30,11 @@ module UsersServices
     def create_user(user_params)
       Try do
         user_params[:password_digest] = BCrypt::Password.create(user_params[:password])
+        user_params[:activation_digest] = SecureRandom.hex
+        user = UserRepository.new.create(user_params)
+        Mailers::ConfirmEmailAddress.deliver(user: user)
 
-        UserSerializer.new(UserRepository.new.create(user_params)).serializable_hash.to_json
+        UserSerializer.new(user).serializable_hash.to_json
       end.to_result
     end
   end

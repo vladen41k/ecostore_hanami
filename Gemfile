@@ -19,6 +19,7 @@ group :development do
   # Code reloading
   # See: https://guides.hanamirb.org/projects/code-reloading
   gem 'hanami-webconsole'
+  gem "letter_opener"
   gem 'shotgun', platforms: :ruby
 end
 

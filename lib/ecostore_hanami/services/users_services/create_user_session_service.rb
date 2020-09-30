@@ -25,7 +25,7 @@ module UsersServices
     end
 
     def find_user(params)
-      user = UserRepository.new.users.where(email: params[:email]).one
+      user = UserRepository.new.users.where(email: params[:email], activated: true).one
 
       if user.nil?
         Failure({ user: INCORRECT_EMAIL })
@@ -39,8 +39,9 @@ module UsersServices
     def create_user_session(user)
       Try do
         hmac_secret = ENV['API_SESSIONS_SECRET']
-        payload = { user_id: user.id, exp: (Time.now.to_i + (12 * 3600)) }
+        payload = { user_id: user.id, exp: Time.now.to_i + 12 * 3600 }
         token = JWT.encode payload, hmac_secret, 'HS256'
+        UserRepository.new.update(user.id, current_sign_in_at: Time.now, last_sign_in_at: user.current_sign_in_at)
 
         { jwt_token: token }.to_json
       end.to_result

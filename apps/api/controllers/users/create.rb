@@ -3,6 +3,7 @@ module Api
     module Users
       class Create
         include Api::Action
+        include ErrorsHelper
 
         def call(params)
           result = UsersServices::CreateUserService.new.call(params)
@@ -10,7 +11,7 @@ module Api
             self.body = result.success
             self.status = 201
           else
-            self.body = { data: result.failure.errors }.to_json
+            self.body = { data: errors_messages(result) }.to_json
             self.status = 400
           end
         end

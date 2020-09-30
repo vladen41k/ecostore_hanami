@@ -141,6 +141,10 @@ GEM
     jsonapi-serializer (2.1.0)
       activesupport (>= 4.2)
     jwt (2.2.2)
+    launchy (2.5.0)
+      addressable (~> 2.7)
+    letter_opener (1.7.0)
+      launchy (~> 2.2)
     mail (2.7.1)
       mini_mime (>= 0.1.1)
     mini_mime (1.0.2)
@@ -218,6 +222,7 @@ DEPENDENCIES
   hanami-webconsole
   jsonapi-serializer
   jwt
+  letter_opener
   pg
   rake
   rspec
