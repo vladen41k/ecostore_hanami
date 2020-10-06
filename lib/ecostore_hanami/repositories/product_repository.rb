@@ -21,8 +21,7 @@ class ProductRepository < Hanami::Repository
   end
 
   def update_category(product_id, categories_ids)
-    categories = categories_ids.split(',')
-    str = categories.each_with_object('').with_index do |(id, s), index|
+    str = categories_ids.each_with_object('').with_index do |(id, s), index|
       s << "#{', ' unless index.zero?}(#{product_id}, #{id})"
     end
 

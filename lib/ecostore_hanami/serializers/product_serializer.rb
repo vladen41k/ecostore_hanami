@@ -3,6 +3,6 @@ class ProductSerializer
   attributes :name
 
   attribute :categories do |product|
-    ProductRepository.new.product_categories(product.id).to_h[:categories]
+    CategorySerializer.new(product.categories).serializable_hash
   end
 end
