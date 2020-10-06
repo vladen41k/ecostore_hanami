@@ -3,7 +3,7 @@
 module Api
   module Controllers
     module OrderItems
-      class Delete
+      class Destroy
         include Api::Action
         include ErrorsHelper
         include AuthenticateUserHelper
