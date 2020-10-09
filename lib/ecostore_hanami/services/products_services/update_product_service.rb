@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'dry/monads'
 require 'dry/monads/do'
 
@@ -28,7 +30,7 @@ module ProductsServices
 
     def update_product(id, product_params)
       Try do
-        category_ids = params[:product].delete(:category_ids)
+        category_ids = product_params.delete(:category_ids)
         product = ProductRepository.new.update(id, product_params)
         ProductRepository.new.update_category(id, category_ids)
 

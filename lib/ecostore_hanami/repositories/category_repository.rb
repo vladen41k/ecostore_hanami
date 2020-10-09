@@ -1,7 +1,7 @@
 class CategoryRepository < Hanami::Repository
   associations do
     has_many :products
-    has_many :products, through: :categories_products
+    has_many :products, through: :category_products
   end
 
   def category_to_product(id)

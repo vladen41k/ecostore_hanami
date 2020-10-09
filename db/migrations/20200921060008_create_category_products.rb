@@ -1,6 +1,6 @@
 Hanami::Model.migration do
   change do
-    create_table :categories_products do
+    create_table :category_products do
       primary_key :id
 
       foreign_key :product_id, :products, null: false

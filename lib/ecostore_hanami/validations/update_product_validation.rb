@@ -7,6 +7,7 @@ class UpdateProductValidation
     required(:id).filled(:int?)
     required(:product).schema do
       required(:name).filled(:str?)
+      required(:cost).filled(:int?)
       required(:category_ids).filled
 
       validate(category_ids_exist: %i[category_ids]) do |cat_ids|

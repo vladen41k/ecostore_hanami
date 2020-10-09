@@ -1,3 +1,3 @@
-RSpec.describe CategoriesProductsRepository, type: :repository do
+RSpec.describe CategoryProductsRepository, type: :repository do
   # place your tests here
 end

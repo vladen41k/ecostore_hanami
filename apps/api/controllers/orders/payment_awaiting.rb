@@ -2,8 +2,8 @@
 
 module Api
   module Controllers
-    module OrderItems
-      class Create
+    module Orders
+      class PaymentAwaiting
         include Api::Action
         include ErrorsHelper
         include AuthenticateUserHelper

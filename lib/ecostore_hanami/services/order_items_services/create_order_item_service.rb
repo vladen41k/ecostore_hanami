@@ -11,7 +11,7 @@ module OrderItemsServices
 
     def call(params, user)
       valid_params = yield validate(params)
-      result = yield create_product(valid_params[:product], user)
+      result = yield create_order_item(valid_params[:order_item], user)
 
       Success(result)
     end

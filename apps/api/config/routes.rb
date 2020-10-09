@@ -11,3 +11,4 @@ resources :order_items, only: %i[create destroy]
 post '/sign_up', to: 'users#create', as: :sign_up
 post '/sign_in', to: 'users#create_session', as: :sign_in
 patch '/confirm_email/:token', to: 'users#confirm_email', as: :confirm_email
+patch '/payment_awaiting/:token', to: 'order#payment_awaiting', as: :payment_awaiting

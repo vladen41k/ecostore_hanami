@@ -4,7 +4,7 @@ gem 'hanami',       '~> 1.3'
 gem 'rake'
 # gem 'hanami-model', '~> 1.3'
 # fixes bigdecimal error
-gem "hanami-model", git: "https://github.com/hanami/model.git"
+gem 'hanami-model', git: 'https://github.com/hanami/model.git'
 
 gem 'pg'
 # gem 'puma'
@@ -13,13 +13,13 @@ gem 'bcrypt'
 gem 'dry-monads'
 gem 'jsonapi-serializer'
 gem 'jwt'
-
+gem 'sberbank-acquiring', '~> 1.0'
 
 group :development do
   # Code reloading
   # See: https://guides.hanamirb.org/projects/code-reloading
   gem 'hanami-webconsole'
-  gem "letter_opener"
+  gem 'letter_opener'
   gem 'shotgun', platforms: :ruby
 end
 
@@ -30,6 +30,9 @@ end
 
 group :test do
   gem 'capybara'
+  gem 'database_cleaner'
+  gem 'factory_bot'
+  gem 'faker'
   gem 'rspec'
 end
 

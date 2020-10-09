@@ -1,4 +1,4 @@
-class CategoriesProductsRepository < Hanami::Repository
+class CategoryProductsRepository < Hanami::Repository
   associations do
     belongs_to :category
     belongs_to :product
@@ -10,9 +10,9 @@ class CategoriesProductsRepository < Hanami::Repository
       s << "#{', ' unless index.zero?}(#{product_id}, #{id})"
     end
 
-    categories_products
-      .read("DELETE FROM categories_products WHERE product_id = #{product_id};
-             INSERT INTO categories_products (product_id, category_id)
+    category_products
+      .read("DELETE FROM category_products WHERE product_id = #{product_id};
+             INSERT INTO category_products (product_id, category_id)
              VALUES #{str};")
   end
 end

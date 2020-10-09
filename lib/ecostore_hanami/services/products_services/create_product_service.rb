@@ -33,7 +33,7 @@ module ProductsServices
       Try do
         product = ProductRepository.new.create(product_params)
         product_params[:category_ids].each do |cat_id|
-          CategoriesProductsRepository.new.create(category_id: cat_id, product_id: product.id)
+          CategoryProductsRepository.new.create(category_id: cat_id, product_id: product.id)
         end
 
         ProductSerializer.new(product).serializable_hash.to_json

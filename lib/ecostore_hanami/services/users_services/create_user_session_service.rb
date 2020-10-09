@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'dry/monads'
 require 'dry/monads/do'
 
@@ -6,7 +8,7 @@ module UsersServices
     include Dry::Monads[:result, :try]
     include Dry::Monads::Do.for(:call)
 
-    INCORRECT_EMAIL = 'email or password is incorrect'.freeze
+    INCORRECT_EMAIL = 'email or password is incorrect'
 
     def call(params)
       valid_params = yield validate(params)

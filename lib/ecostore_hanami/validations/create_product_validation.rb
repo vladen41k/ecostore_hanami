@@ -6,7 +6,7 @@ class CreateProductValidation
   validations do
     required(:product).schema do
       required(:name).filled(:str?)
-      required(:category_ids).filled
+      required(:category_ids).filled(:str?)
 
       validate(category_ids_exist: %i[category_ids]) do |cat_ids|
         array_ids = cat_ids.tr('^0-9,', '').split(',')
