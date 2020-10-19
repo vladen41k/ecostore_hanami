@@ -11,9 +11,13 @@ gem 'pg'
 
 gem 'bcrypt'
 gem 'dry-monads'
+gem 'foreman'
 gem 'jsonapi-serializer'
 gem 'jwt'
 gem 'sberbank-acquiring', '~> 1.0'
+gem 'sidekiq'
+gem 'sinatra', require: false
+gem 'whenever', require: false
 
 group :development do
   # Code reloading

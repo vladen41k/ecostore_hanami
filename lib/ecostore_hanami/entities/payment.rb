@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-class Order < Hanami::Entity
-  STATUSES = { 0 => :cart, 1 => :payment_awaiting, 2 => :paid, 3 => :canceled, 4 => :completed }.freeze
+class Payment < Hanami::Entity
+  STATUS = { 0 => :new_payment, 1 => :payment_awaiting, 3 => :completed, 4 => :failed, 5 => :refunded }.freeze
 
   def self.status(status_name)
     return STATUSES[status_name] if status_name.is_a?(Integer)
