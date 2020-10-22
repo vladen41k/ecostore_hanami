@@ -2,17 +2,15 @@
 # _attributes, class: UserRepository
 FactoryBot.define do
   faker_password = Faker::Internet.password
-  factory :user_attributes, class: 'User' do
-    first_name { Faker::Name.first_name }
-    last_name { Faker::Name.last_name }
+  factory :admin_attributes, class: 'AdminUser' do
+    full_name { Faker::Name.name }
     email { Faker::Internet.email }
     password { faker_password }
     password_confirmation { faker_password }
   end
 
-  factory :user do
-    first_name { Faker::Name.first_name }
-    last_name { Faker::Name.last_name }
+  factory :admin, class: 'AdminUser' do
+    full_name { Faker::Name.name }
     email { Faker::Internet.email }
     password_digest { BCrypt::Password.create(faker_password) }
     activated { true }

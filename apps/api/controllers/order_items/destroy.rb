@@ -5,7 +5,7 @@ module Api
     module OrderItems
       class Destroy
         include Api::Action
-        include ErrorsHelper
+        include Helpers::ErrorsHelper
         include AuthenticateUserHelper
 
         def call(params)

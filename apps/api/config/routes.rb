@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require 'sidekiq/web'
 # Configure your routes here
 # See: https://guides.hanamirb.org/routing/overview
 #
@@ -9,10 +8,8 @@ require 'sidekiq/web'
 
 # Sidekiq::Web.set :session_secret, ENV['WEB_SESSIONS_SECRET']
 
-mount Sidekiq::Web, at: '/admin/sidekiq'
-
-resources :products, only: %i[index show create update]
-resources :categories, only: %i[index show create]
+resources :products, only: %i[index show]
+resources :categories, only: %i[index show]
 resources :order_items, only: %i[create destroy]
 
 post '/sign_up', to: 'users#create', as: :sign_up

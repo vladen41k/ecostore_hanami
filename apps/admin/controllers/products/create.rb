@@ -1,20 +1,20 @@
 # frozen_string_literal: true
 
-module Api
+module Admin
   module Controllers
-    module OrderItems
+    module Products
       class Create
-        include Api::Action
+        include Admin::Action
         include Helpers::ErrorsHelper
-        include AuthenticateUserHelper
+        include Admin::Controllers::AuthenticateAdminHelper
 
         def call(params)
-          if current_user
-            result = OrderItemsServices::CreateOrderItemService.new.call(params, current_user)
+          if current_admin
+            result = ProductsServices::CreateProductService.new.call(params)
 
             result.success? ? status(201, result.success) : status(400, { data: errors_messages(result) }.to_json)
           else
-            status 400, { data: { user: 'must be authenticated' } }.to_json
+            status 400, { data: current_admin_errors }.to_json
           end
         end
 

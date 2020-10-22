@@ -3,7 +3,7 @@ module Api
     module Users
       class Create
         include Api::Action
-        include ErrorsHelper
+        include Helpers::ErrorsHelper
 
         def call(params)
           result = UsersServices::CreateUserService.new.call(params)

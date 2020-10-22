@@ -3,14 +3,14 @@ module Api
     module Users
       class CreateSession
         include Api::Action
-        include ErrorsHelper
+        include Helpers::ErrorsHelper
 
         def call(params)
           result = UsersServices::CreateUserSessionService.new.call(params)
 
           if result.success?
             self.body = result.success
-            self.status = 200
+            self.status = 201
           else
             self.body = { data: errors_messages(result) }.to_json
             self.status = 400

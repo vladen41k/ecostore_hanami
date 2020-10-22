@@ -16,14 +16,21 @@ module Api
 
             status 200, { data: { user: 'user be activated' } }.to_json
           else
-            status 400, params.errors.to_json
+            status 400, { data: params.errors }.to_json
           end
         end
 
         def activate_user(token)
           repository = UserRepository.new
           user = repository.users.where(activation_digest: token).one
-          repository.update(user.id, activated: true, activated_at: Time.now, activation_digest: nil) if user.present?
+
+          if user.present?
+            params = { activated: true, activation_digest: nil }
+            params.merge(activated_at: Time.now) if user.activated_at.blank?
+            params.merge(email: user.unconfirmed_email, unconfirmed_email: nil) if user.user.unconfirmed_email.present?
+
+            repository.update(user.id, params)
+          end
         end
       end
     end

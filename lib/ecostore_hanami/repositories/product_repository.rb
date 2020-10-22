@@ -1,5 +1,4 @@
-# frozen_string_literal: true
-
+# don`t use 'frozen_string_literal: true' in this class
 class ProductRepository < Hanami::Repository
   associations do
     has_many :categories

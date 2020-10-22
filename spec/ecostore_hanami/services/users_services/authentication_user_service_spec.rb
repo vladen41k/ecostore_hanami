@@ -2,7 +2,7 @@
 
 RSpec.describe UsersServices::AuthenticationUserService do
 
-  describe 'create new user' do
+  describe 'authenticate user' do
     context 'when valid params' do
       let!(:user) { create :user }
       let!(:jwt) do

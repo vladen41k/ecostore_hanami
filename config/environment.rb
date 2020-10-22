@@ -4,8 +4,10 @@ require 'hanami/model'
 require_relative '../lib/ecostore_hanami'
 require_relative '../apps/api/application'
 require_relative './sidekiq'
+require_relative '../apps/admin/application'
 
 Hanami.configure do
+  mount Admin::Application, at: '/admin'
   mount Api::Application, at: '/'
 
   model do

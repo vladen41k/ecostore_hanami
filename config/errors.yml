@@ -4,3 +4,4 @@ en:
     equal_passwords: 'passwords must be equal'
     unique_email: 'email must be unique'
     product: 'product not found'
+    confirm_password_at_update: 'user not found or wrong password'
