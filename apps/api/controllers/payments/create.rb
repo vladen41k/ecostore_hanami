@@ -21,6 +21,8 @@ module Api
           end
         end
 
+        private
+
         def create_payment(valid_params, current_user)
           order_id = valid_params[:id]
           payment_method = PaymentMethodRepository.new.payment_methods

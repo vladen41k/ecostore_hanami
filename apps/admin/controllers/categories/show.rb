@@ -5,6 +5,7 @@ module Admin
     module Categories
       class Show
         include Admin::Action
+        include Admin::Controllers::AuthenticateAdminHelper
 
         params do
           required(:id).filled(:str?)

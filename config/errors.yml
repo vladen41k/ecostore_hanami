@@ -2,6 +2,7 @@ en:
   errors:
     category_ids_exist: 'categories ids not exist'
     equal_passwords: 'passwords must be equal'
+    unequal_passwords: 'new password can`t be equal old password'
     unique_email: 'email must be unique'
     product: 'product not found'
     confirm_password_at_update: 'user not found or wrong password'

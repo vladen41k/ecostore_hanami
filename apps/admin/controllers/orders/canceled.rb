@@ -1,15 +1,15 @@
 # frozen_string_literal: true
 
-module Api
+module Admin
   module Controllers
     module Orders
       class Canceled
-        include Api::Action
+        include Admin::Action
         include Helpers::ErrorsHelper
-        include AuthenticateUserHelper
+        include Admin::Controllers::AuthenticateAdminHelper
 
         def call(params)
-          if current_user
+          if current_admin
             valid_params = CanceledPaymentValidation.new(params).validate
             if valid_params.success?
               canceled_payment(valid_params, current_user)
@@ -17,7 +17,7 @@ module Api
               status(400, { data: errors_messages(valid_params) }.to_json)
             end
           else
-            status 400, { data: { user: 'must be authenticated' } }.to_json
+            status 400, { data: current_admin_errors }.to_json
           end
         end
 
